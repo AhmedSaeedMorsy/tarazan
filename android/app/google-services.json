@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "549865682841",
+    "project_id": "trazan-7265e",
+    "storage_bucket": "trazan-7265e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549865682841:android:8d05361097db94ebf4c508",
+        "android_client_info": {
+          "package_name": "com.tarazan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549865682841-pc9ggb3ml3t1irb8c2u42d8e40vq4efa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8k8SmBiRi93Hs26SotrKfh0D7Mkz08hs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549865682841-pc9ggb3ml3t1irb8c2u42d8e40vq4efa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

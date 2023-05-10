@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>549865682841-lcdrljfttg11enc2ip3thc0hhacmo7ct.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.549865682841-lcdrljfttg11enc2ip3thc0hhacmo7ct</string>
+	<key>API_KEY</key>
+	<string>AIzaSyARWg7ym-VujA-GgYUi3-8wVsGneVpbRbw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>549865682841</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tarazan</string>
+	<key>PROJECT_ID</key>
+	<string>trazan-7265e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>trazan-7265e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:549865682841:ios:e8225bac0e2c8ad6f4c508</string>
+</dict>
+</plist>
