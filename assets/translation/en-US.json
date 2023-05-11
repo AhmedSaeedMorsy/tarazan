@@ -72,5 +72,6 @@
       "noFlightsAvailable": "There are no flights available",
       "selectNumberOfSeats": "Select number of seats",
       "seatsMoreThanAvailable": "Seats more than available",
-      "notFoundItem": "Not found item"
+      "notFoundItem": "Not found item",
+      "imageIsRequired": "Image is required"
 }

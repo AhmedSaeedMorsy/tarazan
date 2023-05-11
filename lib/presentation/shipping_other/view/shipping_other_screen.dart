@@ -25,6 +25,7 @@ class ShippingOtherScreen extends StatelessWidget {
   final String from;
   final String to;
   final String typeId;
+  var formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -213,110 +214,137 @@ class ShippingOtherScreen extends StatelessWidget {
                       ),
                       child: SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppStrings.name.tr(),
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height /
-                                  AppSize.s80,
-                            ),
-                            SharedWidget.defaultTextFormField(
-                              textInputType: TextInputType.name,
-                              context: context,
-                              controller: nameController,
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height /
-                                  AppSize.s30,
-                            ),
-                            Text(
-                              AppStrings.amount.tr(),
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height /
-                                  AppSize.s80,
-                            ),
-                            SharedWidget.defaultTextFormField(
-                              textInputType: TextInputType.number,
-                              controller: amountController,
-                              context: context,
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height /
-                                  AppSize.s30,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                ShippingOtherBloc.get(context)
-                                    .getproductImage();
-                              },
-                              child: Container(
-                                height: AppSize.s150.h,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    AppSize.s10.w,
+                        child: Form(
+                          key: formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppStrings.name.tr(),
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height /
+                                    AppSize.s80,
+                              ),
+                              SharedWidget.defaultTextFormField(
+                                  textInputType: TextInputType.name,
+                                  context: context,
+                                  controller: nameController,
+                                  validator: (String? value) {
+                                    if (value!.isEmpty) {
+                                      return AppStrings.thisIsRequired.tr();
+                                    }
+                                    return null;
+                                  }),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height /
+                                    AppSize.s30,
+                              ),
+                              Text(
+                                AppStrings.amount.tr(),
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height /
+                                    AppSize.s80,
+                              ),
+                              SharedWidget.defaultTextFormField(
+                                  textInputType: TextInputType.number,
+                                  controller: amountController,
+                                  context: context,
+                                  validator: (String? value) {
+                                    if (value!.isEmpty) {
+                                      return AppStrings.thisIsRequired.tr();
+                                    }
+                                    return null;
+                                  }),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height /
+                                    AppSize.s30,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  ShippingOtherBloc.get(context)
+                                      .getproductImage();
+                                },
+                                child: Container(
+                                  height: AppSize.s150.h,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      AppSize.s10.w,
+                                    ),
+                                    image: DecorationImage(
+                                        image: ShippingOtherBloc.get(context)
+                                            .productCoverImage(),
+                                        fit: BoxFit.fill),
+                                    border: Border.all(
+                                      color: ColorManager.darkBlue,
+                                    ),
                                   ),
-                                  image: DecorationImage(
-                                      image: ShippingOtherBloc.get(context)
-                                          .productCoverImage(),
-                                      fit: BoxFit.fill),
-                                  border: Border.all(
-                                    color: ColorManager.darkBlue,
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    AppStrings.addPhoto.tr(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge,
+                                  child: Center(
+                                    child: Text(
+                                      AppStrings.addPhoto.tr(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height /
-                                  AppSize.s30,
-                            ),
-                            state is ShippingOtherLoadingState
-                                ? const Center(
-                                    child: CircularProgressIndicator(
-                                      color: ColorManager.primaryColor,
-                                    ),
-                                  )
-                                : SharedWidget.defaultButton(
-                                    context: context,
-                                    function: () {
-                                      ShippingOtherBloc.get(context)
-                                          .shippingOtherCategory(
-                                        shippingId: typeId,
-                                        amount: amountController.text,
-                                        productName: nameController.text,
-                                        profileNewImage:
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height /
+                                    AppSize.s30,
+                              ),
+                              state is ShippingOtherLoadingState
+                                  ? const Center(
+                                      child: CircularProgressIndicator(
+                                        color: ColorManager.primaryColor,
+                                      ),
+                                    )
+                                  : SharedWidget.defaultButton(
+                                      context: context,
+                                      function: () {
+                                        if (ShippingOtherBloc.get(context)
+                                                .productImage !=
+                                            null) {
+                                          if (formKey.currentState!
+                                              .validate()) {
                                             ShippingOtherBloc.get(context)
-                                                .productImage!,
-                                      );
-                                    },
-                                    text: AppStrings.send.tr(),
-                                    backgroundColor: ColorManager.darkBlue,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium!
-                                        .copyWith(
-                                          color: ColorManager.white,
-                                        ),
-                                  ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height /
-                                  AppSize.s20,
-                            ),
-                          ],
+                                                .shippingOtherCategory(
+                                              shippingId: typeId,
+                                              amount: amountController.text,
+                                              productName: nameController.text,
+                                              profileNewImage:
+                                                  ShippingOtherBloc.get(context)
+                                                      .productImage!,
+                                            );
+                                          }
+                                        } else {
+                                          SharedWidget.toast(
+                                            message: AppStrings.imageIsRequired.tr(),
+                                            backgroundColor: ColorManager.error,
+                                          );
+                                        }
+                                      },
+                                      text: AppStrings.send.tr(),
+                                      backgroundColor: ColorManager.darkBlue,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium!
+                                          .copyWith(
+                                            color: ColorManager.white,
+                                          ),
+                                    ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height /
+                                    AppSize.s20,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

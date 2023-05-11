@@ -72,5 +72,6 @@
       "noFlightsAvailable": "لا توجد رحلات متاحة",
       "selectNumberOfSeats": "تحديد عدد المقاعد",
       "seatsMoreThanAvailable": "المقاعد أكثر من المتاح",
-      "notFoundItem": "لا توجد عناصر"
+      "notFoundItem": "لا توجد عناصر",
+      "imageIsRequired": "الصورة مطلوبة"
 }

@@ -75,4 +75,5 @@ class AppStrings {
   static String selectNumberOfSeats = "selectNumberOfSeats";
   static String seatsMoreThanAvailable = "seatsMoreThanAvailable";
   static String notFoundItem = "notFoundItem";
+  static String imageIsRequired = "imageIsRequired";
 }
